@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. 左上角Open editor View显示-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <!--设置actionBar的背景色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--设置沉浸式状态栏的颜色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--主题颜色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionBarTabStyle">@style/MyActionBarTabs</item>
+    </style>
+    <!-- ActionBar tabs styles
+    <style name="MyActionBarTabs"
+        parent="@style/Widget.Holo.ActionBar.TabView">
+        tab indicator
+        <item name="android:background">@drawable/actionbar_tab_indicator</item>
+    </style> -->
+    <!-- ActionBar tabs styles -->
+    <style name="MyActionBarTabs"
+        parent="@style/Widget.AppCompat.ActionBar.TabView">
+        <!-- tab indicator -->
+        <item name="android:background">@drawable/actionbar_tab_indicator</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@drawable/actionbar_tab_indicator</item>
+    </style>
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GoglePlay</string>
+    <string name="action_search">搜索</string>
+    <string name="action_settings">设置</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_home_fragment">HomeFragmentPager</string>
+    <string name="hello_App_fragment">AppFragmentPager</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
+</resources>

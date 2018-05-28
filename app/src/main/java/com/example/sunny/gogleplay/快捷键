@@ -1,0 +1,13 @@
+alt+shift+up/down --------------------------------eclipse(alt+up/down)
+05-24 16:18:02.999 8169-8169/? D/ToastUtils: onTabSelected
+05-24 16:18:03.103 8169-8169/? D/ToastUtils: onPageScrolled
+05-24 16:18:32.775 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onPageScrollStateChanged
+05-24 16:18:32.775 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onPageScrolled
+05-24 16:18:32.795 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onPageScrolled
+05-24 16:18:32.811 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onPageScrolled
+05-24 16:18:32.827 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onPageScrolled
+05-24 16:18:32.843 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onPageScrolled
+05-24 16:18:32.843 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onPageScrollStateChanged
+05-24 16:18:32.843 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onTabUnselected
+05-24 16:18:32.843 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onTabSelected
+05-24 16:18:32.843 8169-8169/com.example.sunny.gogleplay D/ToastUtils: onPageSelected
