@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. 左上角Open editor View显示-->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <!--设置actionBar的背景色-->
         <item name="colorPrimary">@color/colorPrimary</item>

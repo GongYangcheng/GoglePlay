@@ -1,4 +1,4 @@
-package com.example.sunny.gogleplay;
+package com.example.sunny.gogleplay.activity;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -6,66 +6,65 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.sunny.gogleplay.R;
 import com.example.sunny.gogleplay.fragment.AppFragment;
+import com.example.sunny.gogleplay.fragment.FragmentFactor;
 import com.example.sunny.gogleplay.fragment.HomeFragment;
 import com.example.sunny.gogleplay.util.ToastUtils;
+import com.example.sunny.gogleplay.util.UiUtils;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends BaseActivity implements SearchView.OnQueryTextListener {
 
     private ViewPager mViewPager;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private PagerTabStrip pagerTabStrip;
+    private Toolbar toolbar;
+    private String[] tabName;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-//      初始化View
-        initView();
-        mViewPager.setAdapter(new MyPagerViewAdapter(getSupportFragmentManager()));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    protected void init() {
+        super.init();
+        tabName = UiUtils.getStringArray(R.array.tab_names);
+    }
 
-//        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);设置actionBar图标
+    @Override
+    protected void initView() {
+        setContentView(R.layout.activity_main);
+        mViewPager = (ViewPager)findViewById(R.id.viewPage);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        pagerTabStrip = (PagerTabStrip) findViewById(R.id.pager_tab_strip);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mViewPager.setAdapter(new MyPagerViewAdapter(getSupportFragmentManager()));
+//        修改下划线的颜色
+        pagerTabStrip.setTabIndicatorColorResource(R.color.blue);
+    }
+
+    @Override
+    protected void initToolBar() {
+        super.initToolBar();
+        //        替换actionBar
+        setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
-//        actionBar.set
-//        显示tab
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        ActionBar.Tab tab = actionBar.newTab().setText("标题1").setTabListener(new MyTabListener());
-        actionBar.addTab(tab);
-        tab = actionBar.newTab().setText("标题2").setTabListener(new MyTabListener());
-        actionBar.addTab(tab);
-        tab = actionBar.newTab().setText("标题3").setTabListener(new MyTabListener());
-        actionBar.addTab(tab);
-        tab = actionBar.newTab().setText("标题4").setTabListener(new MyTabListener());
-        actionBar.addTab(tab);
-        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-//pager切换时
-                actionBar.setSelectedNavigationItem(position);
-            }
-        });
+        actionBar.setDisplayHomeAsUpEnabled(true);
 //ActionBarDrawerToggle 让actionbar和侧滑菜单做联动
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout, R.string.open,R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
 //        和Actionbar同步
         actionBarDrawerToggle.syncState();
-    }
-
-    private void initView() {
-        mViewPager = (ViewPager)findViewById(R.id.viewPage);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
 
     public class MyPagerViewAdapter extends FragmentStatePagerAdapter{
@@ -76,35 +75,37 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         @Override
         public Fragment getItem(int position) {
-            if(position%2 == 0){
-                return new AppFragment();
-            }
-            return new HomeFragment();
+            return FragmentFactor.getFragment(position);
         }
 
         @Override
         public int getCount() {
-            return 4;
+            return tabName.length;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return tabName[position];
         }
     }
-    public class MyTabListener implements ActionBar.TabListener {
-
-        @Override
-        public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
-            ToastUtils.logShow("onTabSelected");
-            mViewPager.setCurrentItem(tab.getPosition());
-        }
-
-        @Override
-        public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
-            ToastUtils.logShow("onTabUnselected");
-        }
-
-        @Override
-        public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
-            ToastUtils.logShow("onTabReselected");
-        }
-    }
+//    public class MyTabListener implements ActionBar.TabListener {
+//
+//        @Override
+//        public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
+//            ToastUtils.logShow("onTabSelected");
+//            mViewPager.setCurrentItem(tab.getPosition());
+//        }
+//
+//        @Override
+//        public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
+//            ToastUtils.logShow("onTabUnselected");
+//        }
+//
+//        @Override
+//        public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
+//            ToastUtils.logShow("onTabReselected");
+//        }
+//    }
 
 //连接菜单
     @Override

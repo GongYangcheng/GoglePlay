@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * 应用
+ * 排行
  */
-public class AppFragment extends Fragment {
+public class TopFragment extends Fragment {
 
 
-    public AppFragment() {
+    public TopFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class AppFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         TextView textView = new TextView(getActivity());
-        textView.setText("我是 AppFragment");
+        textView.setText("我是 TopFragment");
         return textView;
     }
 
