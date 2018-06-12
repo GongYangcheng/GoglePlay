@@ -2,6 +2,10 @@ package com.example.sunny.gogleplay.activity;
 
 import android.app.Application;
 import android.content.Context;
+import android.widget.ImageView;
+
+import com.example.sunny.gogleplay.util.ImageUtils;
+import com.example.sunny.gogleplay.util.UiUtils;
 
 /**
  * Created by sunny on 2018/5/28.
@@ -14,6 +18,7 @@ public class BaseApplication extends Application{
     public void onCreate() {
         super.onCreate();
         instance = this;
+        ImageUtils.initImage(UiUtils.getContext());
     }
 
     /**

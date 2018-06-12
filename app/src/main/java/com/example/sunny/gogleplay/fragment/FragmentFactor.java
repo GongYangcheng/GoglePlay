@@ -10,10 +10,10 @@ import java.util.HashMap;
 
 public class FragmentFactor {
 
-    private static HashMap<Integer,Fragment> map = new HashMap<>();
+    private static HashMap<Integer,BaseFragment> map = new HashMap<>();
 
-    public static Fragment getFragment(int position){
-        Fragment fragment = map.get(position);
+    public static BaseFragment getFragment(int position){
+        BaseFragment fragment = map.get(position);
         if(fragment == null) {
             switch (position) {
                 case 0:

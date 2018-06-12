@@ -9,6 +9,7 @@
     <string name="open">打开</string>
     <string name="close">关闭</string>
     <string name="load_error">加载失败,点击重试..</string>
+    <string name="action_download">下载</string>
 
     <string-array name="tab_names">
         <item>首页</item>

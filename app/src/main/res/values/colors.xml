@@ -3,6 +3,8 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="blue">#ff0084ff</color>
+    <color name="item_divider">#ffd7d7d7</color>
 
 </resources>

@@ -8,24 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.sunny.gogleplay.view.LoadingPage;
+
 /**
  * A simple {@link Fragment} subclass.
  * 排行
  */
-public class TopFragment extends Fragment {
-
-
-    public TopFragment() {
-        // Required empty public constructor
+public class TopFragment extends BaseFragment {
+    @Override
+    public int load() {
+        return LoadingPage.STATU_ERROR;
     }
-
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText("我是 TopFragment");
-        return textView;
+    protected View createSuccessView() {
+        return null;
     }
-
 }

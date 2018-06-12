@@ -21,10 +21,18 @@ import android.view.View;
 
 import com.example.sunny.gogleplay.R;
 import com.example.sunny.gogleplay.fragment.AppFragment;
+import com.example.sunny.gogleplay.fragment.BaseFragment;
 import com.example.sunny.gogleplay.fragment.FragmentFactor;
 import com.example.sunny.gogleplay.fragment.HomeFragment;
+import com.example.sunny.gogleplay.util.FileUtils;
+import com.example.sunny.gogleplay.util.IOUtils;
 import com.example.sunny.gogleplay.util.ToastUtils;
 import com.example.sunny.gogleplay.util.UiUtils;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class MainActivity extends BaseActivity implements SearchView.OnQueryTextListener {
 
@@ -34,6 +42,7 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
     private PagerTabStrip pagerTabStrip;
     private Toolbar toolbar;
     private String[] tabName;
+    private BaseFragment fragment;
 
     @Override
     protected void init() {
@@ -51,8 +60,15 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
         mViewPager.setAdapter(new MyPagerViewAdapter(getSupportFragmentManager()));
 //        修改下划线的颜色
         pagerTabStrip.setTabIndicatorColorResource(R.color.blue);
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                fragment = FragmentFactor.getFragment(position);
+                fragment.show();
+            }
+        });
     }
-
     @Override
     protected void initToolBar() {
         super.initToolBar();
@@ -88,25 +104,6 @@ public class MainActivity extends BaseActivity implements SearchView.OnQueryText
             return tabName[position];
         }
     }
-//    public class MyTabListener implements ActionBar.TabListener {
-//
-//        @Override
-//        public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
-//            ToastUtils.logShow("onTabSelected");
-//            mViewPager.setCurrentItem(tab.getPosition());
-//        }
-//
-//        @Override
-//        public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
-//            ToastUtils.logShow("onTabUnselected");
-//        }
-//
-//        @Override
-//        public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
-//            ToastUtils.logShow("onTabReselected");
-//        }
-//    }
-
 //连接菜单
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

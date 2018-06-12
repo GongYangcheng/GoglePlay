@@ -8,24 +8,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.sunny.gogleplay.view.LoadingPage;
+
 /**
  * A simple {@link Fragment} subclass.
  * 专题
  */
-public class SubjectFragment extends Fragment {
-
-
-    public SubjectFragment() {
-        // Required empty public constructor
-    }
+public class SubjectFragment extends BaseFragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText("我是 SubjectFragment");
-        return textView;
+    public int load() {
+
+        return LoadingPage.STATU_ERROR;
     }
 
+    @Override
+    protected View createSuccessView() {
+        return null;
+    }
 }

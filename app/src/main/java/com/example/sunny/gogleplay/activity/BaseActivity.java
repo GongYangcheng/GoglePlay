@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.example.sunny.gogleplay.util.ActivityControl;
 
+/**
+ * 引用在栈里，对象在堆里，栈比较小
+ */
 public class BaseActivity extends AppCompatActivity {
 
     @Override
